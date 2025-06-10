@@ -39,15 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCard = null;
 
     function cardClass(action) {
-        switch(action) {
-            case 'Choca esos 5':
+        switch (action.toLowerCase()) {
+            case 'choca esos 5':
                 return 'card-choca';
-
-            case 'Puños de pez':
+            case 'puños de atún':
                 return 'card-punos';
-            case 'Atún feliz':
+            case 'atún feliz':
                 return 'card-atun';
-            case 'Cambios':
+            case 'cambio':
+            case 'cambios':
                 return 'card-cambios';
             default:
                 return '';
