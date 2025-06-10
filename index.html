@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atún Feliz</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Lilita+One&family=Orbitron:wght@900&family=Permanent+Marker&family=Righteous&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,14 +21,20 @@
         </span>
 
 
-        <div id="deck" class="card-pile">
-            <p>Haz clic para empezar y robar una carta</p>
+        <div id="deck" class="card card-pile">
+            <span>Haz clic para empezar y robar una carta</span>
         </div>
 
         <p id="card-count">Cartas restantes: 0</p>
 
         <div id="active-card" class="card hidden">
-            <span id="card-action"></span>
+            <div class="bubbles">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="card-content">
+                <span id="card-icon" class="card-icon"></span>
+                <span id="card-action" class="card-title"></span>
+            </div>
         </div>
 
         <div id="action-buttons" class="hidden">

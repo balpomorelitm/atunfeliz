@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Definición de elementos del DOM ---
     const deckElement = document.getElementById('deck');
     const activeCardElement = document.getElementById('active-card');
+    const cardIconElement = document.getElementById('card-icon');
     const cardActionText = document.getElementById('card-action');
     const actionButtons = document.getElementById('action-buttons');
     const passButton = document.getElementById('pass-btn');
@@ -13,10 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Definición de las cartas ---
     const cardActions = [
-        "choca esos 5",
-        "puños de atún", 
-        "atún feliz",
-        "cambio"
+        "Choca esos 5",
+        "Puños de atún",
+        "Atún feliz",
+        "Cambio"
+    ];
+
+    const cardIcons = {
+        "Choca esos 5": "✋",
+        "Puños de atún": "🐟+👊",
+        "Atún feliz": "🐟",
+        "Cambio": "🔄"
     ];
 
     const cardEmojis = {
@@ -24,25 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
         "puños de atún": "🤜🤛",
         "atún feliz": "🐟😀",
         "cambio": "♻️"
+
     };
 
     let playerDeck = [];
     let currentCard = null;
-    let playerColor = '#ffdd57';
-
-    function randomColor() {
-        const r = Math.floor(Math.random()*256);
-        const g = Math.floor(Math.random()*256);
-        const b = Math.floor(Math.random()*256);
-        return `rgb(${r}, ${g}, ${b})`;
-    }
 
     function cardClass(action) {
         switch (action.toLowerCase()) {
             case 'choca esos 5':
                 return 'card-choca';
             case 'puños de atún':
-            case 'puños de pez':
                 return 'card-punos';
             case 'atún feliz':
                 return 'card-atun';
@@ -94,7 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
         currentCard = playerDeck.shift();
 
         // Muestra la carta y los botones
+
+        cardActionText.textContent = currentCard;
+        cardIconElement.textContent = cardIcons[currentCard] || '';
+        activeCardElement.className = 'card';
+
         cardActionText.textContent = `${currentCard} ${cardEmojis[currentCard] || ''}`;
+
         activeCardElement.classList.add(cardClass(currentCard));
         deckElement.classList.add('hidden');
         activeCardElement.classList.remove('hidden');
@@ -148,8 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         createAndShuffleDeck();
         currentCard = null;
-        playerColor = randomColor();
-        deckElement.style.backgroundColor = playerColor;
         winMessageElement.classList.add('hidden');
         activeCardElement.classList.add('hidden');
         actionButtons.classList.add('hidden');
