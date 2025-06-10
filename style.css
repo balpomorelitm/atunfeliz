@@ -55,7 +55,7 @@ h1 {
 .card-punos {
     background-color: #4dabf7;
 }
-.card-salmon {
+.card-atun {
     background-color: #ff6b6b;
 }
 .card-cambios {
@@ -139,4 +139,9 @@ button {
 /* Clase de utilidad para ocultar elementos */
 .hidden {
     display: none !important;
+}
+
+#card-count {
+    margin-top: 10px;
+    font-weight: bold;
 }
