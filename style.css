@@ -293,6 +293,7 @@ button {
     display: inline-block;
     cursor: help;
     margin-left: 8px;
+    z-index: 100;
 }
 
 .tooltip-text {
@@ -304,7 +305,7 @@ button {
     border-radius: 6px;
     padding: 5px;
     position: absolute;
-    z-index: 1;
+    z-index: 200;
     top: 125%;
     left: 50%;
     transform: translateX(-50%);
