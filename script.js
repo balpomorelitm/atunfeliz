@@ -13,11 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Definición de las cartas ---
     const cardActions = [
-        "Choca esos 5", 
-        "Puños de pez", 
-        "Atún feliz",
-        "Cambios"
+        "choca esos 5",
+        "puños de atún", 
+        "atún feliz",
+        "cambio"
     ];
+
+    const cardEmojis = {
+        "choca esos 5": "🤚✋",
+        "puños de atún": "🤜🤛",
+        "atún feliz": "🐟😀",
+        "cambio": "♻️"
+    };
 
     let playerDeck = [];
     let currentCard = null;
@@ -34,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         switch(action) {
             case 'Choca esos 5':
                 return 'card-choca';
-            case 'Pu\u00f1os de pez':
+            case 'Puños de pez':
                 return 'card-punos';
             case 'Atún feliz':
                 return 'card-atun';
@@ -85,8 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentCard = playerDeck.shift();
 
         // Muestra la carta y los botones
-        cardActionText.textContent = currentCard;
-        activeCardElement.className = 'card';
+        cardActionText.textContent = `${currentCard} ${cardEmojis[currentCard] || ''}`;
         activeCardElement.classList.add(cardClass(currentCard));
         deckElement.classList.add('hidden');
         activeCardElement.classList.remove('hidden');
