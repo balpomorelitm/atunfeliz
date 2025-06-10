@@ -135,45 +135,40 @@ h1 {
 .bubbles span:nth-child(5) { left: 65%; animation-duration: 7s; animation-delay: 3s; }
 
 
-/* --- Propuesta 1 para At\u00fan Feliz: "R\u00e1faga de Alegr\u00eda" --- */
+/* --- Propuesta 2 para At\u00fan Feliz: "Ola Hologr\u00e1fica" --- */
+#card-atun,
 .card-atun {
-    position: relative;
-    /* Un fondo base brillante */
-    background-color: #ffde59;
+    /* Un fondo oscuro para que los colores ne\u00f3n resalten */
+    background-color: #1a1a2e;
     font-family: 'Permanent Marker', cursive; /* Mantenemos la tipograf\u00eda */
-    overflow: hidden; /* Muy importante para que el efecto no se salga */
-}
-
-.card-atun::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200%; /* El doble del tama\u00f1o para que cubra todo al girar */
-    height: 200%;
-    /* El gradiente c\u00f3nico que crea los rayos de colores */
-    background-image: conic-gradient(
-        from 0deg,
-        #ff5733, #ff8d33, #ffc300, #a8e6cf, #45b6fe, #8338ec, #ff5733
+    background-size: 400% 400%; /* Hacemos el fondo mucho m\u00e1s grande que la carta */
+    /* El gradiente con todos los colores de la felicidad */
+    background-image: linear-gradient(
+        -45deg,
+        #f00,
+        #ff7b00,
+        #ffff00,
+        #0f0,
+        #00f,
+        #4b0082,
+        #ee82ee
     );
-    /* Animaci\u00f3n para que gire lentamente */
-    animation: spin-colors 20s linear infinite;
+    /* La animaci\u00f3n que mover\u00e1 el fondo */
+    animation: holographic-wave 10s ease-in-out infinite;
 }
 
-/* La animaci\u00f3n que hace girar el fondo */
-@keyframes spin-colors {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+/* La animaci\u00f3n que mueve la posici\u00f3n del fondo para crear el efecto */
+@keyframes holographic-wave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* Aseguramos que el contenido (icono y texto) est\u00e9 por encima del fondo */
-.card-atun .card-content {
-   position: relative;
-   z-index: 2;
-   /* A\u00f1adimos un fondo sutil al texto para mejorar la legibilidad */
-   background-color: rgba(0, 0, 0, 0.2);
-   padding: 1rem;
-   border-radius: 15px;
+/* Adaptamos el color del texto para que contraste con el fondo oscuro */
+#card-atun .card-title,
+.card-atun .card-title {
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra m\u00e1s pronunciada */
 }
 .card-cambio {
     background: linear-gradient(135deg, #8338ec 50%, #3a86ff 50%);
