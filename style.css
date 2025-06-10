@@ -140,3 +140,8 @@ button {
 .hidden {
     display: none !important;
 }
+
+#card-count {
+    margin-top: 10px;
+    font-weight: bold;
+}
