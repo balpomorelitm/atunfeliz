@@ -1,0 +1,91 @@
+/* Estilos generales y enfoque mobile-first */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* AliceBlue */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    color: #ff6347; /* Tomato */
+}
+
+/* Estilos para las cartas */
+.card-pile, .card {
+    background-color: white;
+    border: 2px solid #ff6347;
+    border-radius: 15px;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    padding: 20px;
+}
+
+.card-pile:hover {
+    transform: scale(1.05);
+}
+
+#active-card {
+    background-color: #ffdd57; /* Amarillo */
+    font-size: 2em;
+    font-weight: bold;
+    cursor: default;
+}
+
+/* Estilos para los botones */
+#action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#pass-btn {
+    background-color: #777;
+    color: white;
+}
+#pass-btn:hover {
+    background-color: #555;
+}
+
+#complete-btn {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+#complete-btn:hover {
+    background-color: #218838;
+}
+
+#restart-btn {
+    margin-top: 20px;
+    background-color: #ff6347;
+    color: white;
+}
+
+/* Clase de utilidad para ocultar elementos */
+.hidden {
+    display: none !important;
+}
