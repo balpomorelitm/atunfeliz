@@ -14,6 +14,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 400px;
+    position: relative;
 }
 
 h1 {
@@ -40,10 +41,60 @@ h1 {
 }
 
 #active-card {
-    background-color: #ffdd57; /* Amarillo */
+    background-color: #ffdd57; /* Amarillo por defecto */
     font-size: 2em;
     font-weight: bold;
     cursor: default;
+    position: relative;
+}
+
+/* Dise\u00f1os espec\u00edficos para cada tipo de carta */
+.card-choca {
+    background-color: #ffd166;
+}
+.card-punos {
+    background-color: #4dabf7;
+}
+.card-salmon {
+    background-color: #ff6b6b;
+}
+.card-cambios {
+    background-color: #6a994e;
+    color: #fff;
+}
+
+/* Animaciones */
+@keyframes fly-away {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-150%) rotate(20deg); opacity: 0; }
+}
+
+@keyframes pass-move {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(150%) rotate(-20deg); opacity: 0; }
+}
+
+@keyframes pop-check {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0; }
+}
+
+.check-emoji {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    animation: pop-check 0.5s forwards;
+}
+
+.animate-complete {
+    animation: fly-away 0.6s forwards;
+}
+
+.animate-pass {
+    animation: pass-move 0.6s forwards;
 }
 
 /* Estilos para los botones */

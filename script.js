@@ -20,6 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let playerDeck = [];
     let currentCard = null;
+    let playerColor = '#ffdd57';
+
+    function randomColor() {
+        const r = Math.floor(Math.random()*256);
+        const g = Math.floor(Math.random()*256);
+        const b = Math.floor(Math.random()*256);
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function cardClass(action) {
+        switch(action) {
+            case 'Choca esos 5':
+                return 'card-choca';
+            case 'Pu\u00f1os de pez':
+                return 'card-punos';
+            case 'Salm\u00f3n feliz':
+                return 'card-salmon';
+            case 'Cambios':
+                return 'card-cambios';
+            default:
+                return '';
+        }
+    }
 
     // --- Funciones del Juego ---
 
@@ -53,9 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Saca la primera carta del mazo
         currentCard = playerDeck.shift();
-        
+
         // Muestra la carta y los botones
         cardActionText.textContent = currentCard;
+        activeCardElement.className = 'card';
+        activeCardElement.classList.add(cardClass(currentCard));
         deckElement.classList.add('hidden');
         activeCardElement.classList.remove('hidden');
         actionButtons.classList.remove('hidden');
@@ -65,8 +90,22 @@ document.addEventListener('DOMContentLoaded', () => {
      * Maneja la acción "Completada": la carta se descarta.
      */
     function handleComplete() {
-        // La carta simplemente se descarta (no vuelve al mazo)
-        showNextCard();
+        const check = document.createElement('span');
+        check.textContent = '✅';
+        check.className = 'check-emoji';
+        activeCardElement.appendChild(check);
+
+        function onEnd() {
+            activeCardElement.removeEventListener('animationend', onEnd);
+            activeCardElement.classList.remove('animate-complete');
+            showNextCard();
+        }
+
+        activeCardElement.addEventListener('animationend', onEnd);
+        activeCardElement.classList.add('animate-complete');
+        setTimeout(() => {
+            activeCardElement.removeChild(check);
+        }, 500);
     }
 
     /**
@@ -76,7 +115,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentCard) {
             playerDeck.push(currentCard);
         }
-        showNextCard();
+        function onEnd() {
+            activeCardElement.removeEventListener('animationend', onEnd);
+            activeCardElement.classList.remove('animate-pass');
+            showNextCard();
+        }
+
+        activeCardElement.addEventListener('animationend', onEnd);
+        activeCardElement.classList.add('animate-pass');
     }
     
     /**
@@ -85,6 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         createAndShuffleDeck();
         currentCard = null;
+        playerColor = randomColor();
+        deckElement.style.backgroundColor = playerColor;
         winMessageElement.classList.add('hidden');
         activeCardElement.classList.add('hidden');
         actionButtons.classList.add('hidden');
