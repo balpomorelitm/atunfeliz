@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
 /* Estilos generales y enfoque mobile-first */
 body {
     font-family: 'Righteous', sans-serif;
@@ -20,8 +22,22 @@ body {
     position: relative;
 }
 
+/* Reemplaza tu antiguo estilo h1 con este */
 h1 {
-    color: #ff6347; /* Tomato */
+    font-family: 'Lilita One', cursive; /* La nueva tipografía importada */
+    font-size: 4.5rem; /* Un tamaño más impactante */
+    margin-bottom: 0.5rem;
+    
+    /* Efecto de gradiente para el color del texto */
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text; /* Permite que el fondo sea visible solo en el texto */
+    background-clip: text;
+    color: transparent; /* Oculta el color original de la fuente */
+    
+    /* Sombra y contorno para darle profundidad y legibilidad */
+    -webkit-text-stroke: 1.5px #002b4d; /* Contorno oscuro */
+    text-stroke: 1.5px #002b4d;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15); /* Sombra sutil */
 }
 
 /* Estilos para las cartas */
