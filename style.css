@@ -356,3 +356,9 @@ button {
     background-color: #ffe066;
     transform: scale(1.1);
 }
+
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+}
