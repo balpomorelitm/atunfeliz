@@ -57,6 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
         cardCountElement.textContent = `Cartas restantes: ${total}`;
     }
 
+    /**
+     * Devuelve un color RGB aleatorio.
+     */
+    function randomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
     // --- Funciones del Juego ---
 
     /**
@@ -151,6 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         createAndShuffleDeck();
         currentCard = null;
+
+        const playerColor = randomColor();
+        deckElement.style.backgroundColor = playerColor;
+        deckElement.style.borderColor = playerColor;
         winMessageElement.classList.add('hidden');
         activeCardElement.classList.add('hidden');
         actionButtons.classList.add('hidden');
