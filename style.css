@@ -267,6 +267,16 @@ button {
     color: white;
 }
 
+/* Botón para activar o desactivar cartas de Cambio */
+#change-toggle-btn {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffd166;
+    color: #333;
+}
+
 /* Clase de utilidad para ocultar elementos */
 .hidden {
     display: none !important;

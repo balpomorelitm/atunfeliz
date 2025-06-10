@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const winMessageElement = document.getElementById('win-message');
     const restartButton = document.getElementById('restart-btn');
     const cardCountElement = document.getElementById('card-count');
+    const changeToggleButton = document.getElementById('change-toggle-btn');
+
+    let includeChangeCards = true;
 
     // --- Definición de las cartas ---
     const cardActions = [
@@ -64,8 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function createAndShuffleDeck() {
         playerDeck = [];
+        const actions = includeChangeCards ? cardActions : cardActions.filter(a => a !== "Cambio");
         for (let i = 0; i < 3; i++) {
-            playerDeck.push(...cardActions);
+            playerDeck.push(...actions);
         }
 
         // Algoritmo de barajado (Fisher-Yates)
@@ -86,6 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
             winMessageElement.classList.remove('hidden');
             cardCountElement.textContent = 'Cartas restantes: 0';
             return;
+        }
+
+        // Oculta el botón de cambios al comenzar la partida
+        if (currentCard === null) {
+            changeToggleButton.classList.add('hidden');
         }
 
         // Saca la primera carta del mazo
@@ -155,6 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
         activeCardElement.classList.add('hidden');
         actionButtons.classList.add('hidden');
         deckElement.classList.remove('hidden');
+        changeToggleButton.classList.remove('hidden');
+        changeToggleButton.disabled = false;
+        changeToggleButton.textContent = includeChangeCards ? 'Cambios SÍ' : 'Cambios NO';
         updateCardCount();
     }
 
@@ -164,6 +176,12 @@ document.addEventListener('DOMContentLoaded', () => {
     completeButton.addEventListener('click', handleComplete);
     passButton.addEventListener('click', handlePass);
     restartButton.addEventListener('click', startGame);
+    changeToggleButton.addEventListener('click', () => {
+        includeChangeCards = !includeChangeCards;
+        changeToggleButton.textContent = includeChangeCards ? 'Cambios SÍ' : 'Cambios NO';
+        createAndShuffleDeck();
+        updateCardCount();
+    });
 
     // --- Iniciar el juego por primera vez ---
     startGame();
