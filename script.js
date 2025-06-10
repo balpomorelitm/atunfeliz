@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const completeButton = document.getElementById('complete-btn');
     const winMessageElement = document.getElementById('win-message');
     const restartButton = document.getElementById('restart-btn');
+    const cardCountElement = document.getElementById('card-count');
 
     // --- Definición de las cartas ---
     const cardActions = [
@@ -44,6 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function updateCardCount() {
+        const total = playerDeck.length + (currentCard ? 1 : 0);
+        cardCountElement.textContent = `Cartas restantes: ${total}`;
+    }
+
     // --- Funciones del Juego ---
 
     /**
@@ -71,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             activeCardElement.classList.add('hidden');
             actionButtons.classList.add('hidden');
             winMessageElement.classList.remove('hidden');
+            cardCountElement.textContent = 'Cartas restantes: 0';
             return;
         }
 
@@ -84,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         deckElement.classList.add('hidden');
         activeCardElement.classList.remove('hidden');
         actionButtons.classList.remove('hidden');
+
+        updateCardCount();
     }
 
     /**
@@ -137,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeCardElement.classList.add('hidden');
         actionButtons.classList.add('hidden');
         deckElement.classList.remove('hidden');
+        updateCardCount();
     }
 
 
