@@ -112,39 +112,53 @@ h1 {
     animation: bubble-rise 10s infinite;
     z-index: 1;
 }
-.card-atun {
-    background-color: #ff6b6b;
-
-}
 .bubbles span:nth-child(1) { left: 10%; animation-duration: 6s; }
 .bubbles span:nth-child(2) { left: 80%; animation-duration: 8s; animation-delay: 2s; width: 15px; height: 15px;}
 .bubbles span:nth-child(3) { left: 50%; animation-duration: 5s; animation-delay: 4s; }
 .bubbles span:nth-child(4) { left: 25%; animation-duration: 9s; animation-delay: 1s; width: 25px; height: 25px;}
 .bubbles span:nth-child(5) { left: 65%; animation-duration: 7s; animation-delay: 3s; }
 
+
+/* --- Propuesta 1 para At\u00fan Feliz: "R\u00e1faga de Alegr\u00eda" --- */
 .card-atun {
-    background-color: #ff8fa3;
-    animation: wobble 2s ease-in-out infinite;
-    font-family: 'Permanent Marker', cursive;
-}
-.card-atun::before,
-.card-atun::after {
-    content: '';
-    position: absolute;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 45%;
-    animation: wave 7s linear infinite;
-    z-index: 1;
-}
-.card-atun::after {
-    border-radius: 40%;
-    animation: wave 13s linear infinite reverse;
-    opacity: 0.7;
+    position: relative;
+    /* Un fondo base brillante */
+    background-color: #ffde59;
+    font-family: 'Permanent Marker', cursive; /* Mantenemos la tipograf\u00eda */
+    overflow: hidden; /* Muy importante para que el efecto no se salga */
 }
 
+.card-atun::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%; /* El doble del tama\u00f1o para que cubra todo al girar */
+    height: 200%;
+    /* El gradiente c\u00f3nico que crea los rayos de colores */
+    background-image: conic-gradient(
+        from 0deg,
+        #ff5733, #ff8d33, #ffc300, #a8e6cf, #45b6fe, #8338ec, #ff5733
+    );
+    /* Animaci\u00f3n para que gire lentamente */
+    animation: spin-colors 20s linear infinite;
+}
+
+/* La animaci\u00f3n que hace girar el fondo */
+@keyframes spin-colors {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Aseguramos que el contenido (icono y texto) est\u00e9 por encima del fondo */
+.card-atun .card-content {
+   position: relative;
+   z-index: 2;
+   /* A\u00f1adimos un fondo sutil al texto para mejorar la legibilidad */
+   background-color: rgba(0, 0, 0, 0.2);
+   padding: 1rem;
+   border-radius: 15px;
+}
 .card-cambio {
     background: linear-gradient(135deg, #8338ec 50%, #3a86ff 50%);
     font-family: 'Righteous', cursive;
