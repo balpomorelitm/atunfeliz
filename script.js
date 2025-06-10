@@ -25,6 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
         "Puños de atún": "🐟+👊",
         "Atún feliz": "🐟",
         "Cambio": "🔄"
+    ];
+
+    const cardEmojis = {
+        "choca esos 5": "🤚✋",
+        "puños de atún": "🤜🤛",
+        "atún feliz": "🐟😀",
+        "cambio": "♻️"
+
     };
 
     let playerDeck = [];
@@ -34,12 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
         switch(action) {
             case 'Choca esos 5':
                 return 'card-choca';
-            case 'Pu\u00f1os de at\u00fan':
+
+            case 'Puños de pez':
                 return 'card-punos';
-            case 'At\u00fan feliz':
+            case 'Atún feliz':
                 return 'card-atun';
-            case 'Cambio':
-                return 'card-cambio';
+            case 'Cambios':
+                return 'card-cambios';
             default:
                 return '';
         }
@@ -85,9 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
         currentCard = playerDeck.shift();
 
         // Muestra la carta y los botones
+
         cardActionText.textContent = currentCard;
         cardIconElement.textContent = cardIcons[currentCard] || '';
         activeCardElement.className = 'card';
+
+        cardActionText.textContent = `${currentCard} ${cardEmojis[currentCard] || ''}`;
+
         activeCardElement.classList.add(cardClass(currentCard));
         deckElement.classList.add('hidden');
         activeCardElement.classList.remove('hidden');
