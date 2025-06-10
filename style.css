@@ -307,7 +307,27 @@ button {
     opacity: 1;
 }
 
+.tooltip.info-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
 .info-icon {
-    font-size: 0.8em;
-    color: #555;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2em;
+    background-color: #ffeb3b;
+    color: #333;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.info-icon:hover {
+    background-color: #ffe066;
+    transform: scale(1.1);
 }
