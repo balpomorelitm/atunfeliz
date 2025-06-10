@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return 'card-choca';
             case 'Pu\u00f1os de pez':
                 return 'card-punos';
-            case 'At\u00fan feliz':
+            case 'Atún feliz':
                 return 'card-atun';
             case 'Cambios':
                 return 'card-cambios';
