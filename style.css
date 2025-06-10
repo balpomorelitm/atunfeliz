@@ -1,12 +1,15 @@
 /* Estilos generales y enfoque mobile-first */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* AliceBlue */
+    font-family: 'Righteous', sans-serif;
+    background-color: #eef1f5;
     color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 2rem;
     height: 100vh;
+    padding: 2rem;
     margin: 0;
 }
 
@@ -22,45 +25,136 @@ h1 {
 }
 
 /* Estilos para las cartas */
-.card-pile, .card {
+.card-pile,
+.card {
+    width: 280px;
+    height: 400px;
     background-color: white;
     border: 2px solid #ff6347;
-    border-radius: 15px;
-    min-height: 200px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
     padding: 20px;
+    cursor: pointer;
 }
 
+.card:hover,
 .card-pile:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 #active-card {
-    background-color: #ffdd57; /* Amarillo por defecto */
-    font-size: 2em;
-    font-weight: bold;
     cursor: default;
-    position: relative;
+}
+
+.card-content {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-icon {
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.card-title {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
 }
 
 /* Dise\u00f1os espec\u00edficos para cada tipo de carta */
+#deck {
+    background-color: #1a759f;
+    background-image: radial-gradient(circle at 100% 150%, #1a759f 24%, #d9ed92 25%, #d9ed92 28%, #1a759f 29%, #1a759f 36%, #d9ed92 36%, #d9ed92 40%, transparent 40%, transparent),
+                      radial-gradient(circle at 0 150%, #1a759f 24%, #d9ed92 25%, #d9ed92 28%, #1a759f 29%, #1a759f 36%, #d9ed92 36%, #d9ed92 40%, transparent 40%, transparent),
+                      radial-gradient(circle at 50% 100%, #d9ed92 10%, #1a759f 11%, #1a759f 23%, #d9ed92 24%, #d9ed92 30%, #1a759f 31%, #1a759f 43%, #d9ed92 44%, #d9ed92 50%, #1a759f 51%, #1a759f 63%, #d9ed92 64%, #d9ed92 71%, transparent 71%, transparent);
+    background-size: 100px 50px;
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    color: #f7b267;
+    text-shadow: 3px 3px 0px #c1121f;
+    letter-spacing: 2px;
+}
+
 .card-choca {
-    background-color: #ffd166;
+    background-color: #ffc300;
+    background-image: repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2), rgba(255,255,255,0.2) 10px, transparent 10px, transparent 20px);
+    animation: spin 30s linear infinite;
+    font-family: 'Lilita One', cursive;
 }
+.card-choca .card-icon {
+    animation: pop-in 0.5s ease-out;
+}
+
 .card-punos {
-    background-color: #4dabf7;
+    background: linear-gradient(to top, #03045e, #0077b6, #00b4d8);
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
 }
+
+.bubbles span {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: bubble-rise 10s infinite;
+    z-index: 1;
+
 .card-atun {
     background-color: #ff6b6b;
+
 }
-.card-cambios {
-    background-color: #6a994e;
+.bubbles span:nth-child(1) { left: 10%; animation-duration: 6s; }
+.bubbles span:nth-child(2) { left: 80%; animation-duration: 8s; animation-delay: 2s; width: 15px; height: 15px;}
+.bubbles span:nth-child(3) { left: 50%; animation-duration: 5s; animation-delay: 4s; }
+.bubbles span:nth-child(4) { left: 25%; animation-duration: 9s; animation-delay: 1s; width: 25px; height: 25px;}
+.bubbles span:nth-child(5) { left: 65%; animation-duration: 7s; animation-delay: 3s; }
+
+.card-atun {
+    background-color: #ff8fa3;
+    animation: wobble 2s ease-in-out infinite;
+    font-family: 'Permanent Marker', cursive;
+}
+.card-atun::before,
+.card-atun::after {
+    content: '';
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 45%;
+    animation: wave 7s linear infinite;
+    z-index: 1;
+}
+.card-atun::after {
+    border-radius: 40%;
+    animation: wave 13s linear infinite reverse;
+    opacity: 0.7;
+}
+
+.card-cambio {
+    background: linear-gradient(135deg, #8338ec 50%, #3a86ff 50%);
+    font-family: 'Righteous', cursive;
     color: #fff;
+}
+.card-cambio .card-content {
+    animation: slide-in 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.card-cambio .card-icon {
+    animation: arrows-move 1.5s ease-in-out infinite;
 }
 
 /* Animaciones */
@@ -78,6 +172,42 @@ h1 {
     0% { transform: scale(0); opacity: 0; }
     50% { transform: scale(1.2); opacity: 1; }
     100% { transform: scale(0.8); opacity: 0; }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pop-in {
+    0% { transform: scale(0); opacity: 0; }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bubble-rise {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-500px) translateX(20px); opacity: 0; }
+}
+
+@keyframes wave {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+}
+
+@keyframes slide-in {
+    from { transform: translateY(100px); opacity: 0;}
+    to { transform: translateY(0); opacity: 1;}
+}
+
+@keyframes arrows-move {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
 }
 
 .check-emoji {
