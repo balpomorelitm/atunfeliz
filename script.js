@@ -180,7 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
         deckElement.classList.remove('hidden');
         changeToggleButton.classList.remove('hidden');
         changeToggleButton.disabled = false;
-        changeToggleButton.textContent = includeChangeCards ? 'Cambios SÍ' : 'Cambios NO';
+        changeToggleButton.textContent = includeChangeCards ? 'Cambios SÍ 🔄' : 'Cambios NO 🔄';
+        changeToggleButton.style.backgroundColor = includeChangeCards ? '#28a745' : '#dc3545';
+        changeToggleButton.style.color = '#fff';
         updateCardCount();
     }
 
@@ -192,7 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
     restartButton.addEventListener('click', startGame);
     changeToggleButton.addEventListener('click', () => {
         includeChangeCards = !includeChangeCards;
-        changeToggleButton.textContent = includeChangeCards ? 'Cambios SÍ' : 'Cambios NO';
+        changeToggleButton.textContent = includeChangeCards ? 'Cambios SÍ 🔄' : 'Cambios NO 🔄';
+        changeToggleButton.style.backgroundColor = includeChangeCards ? '#28a745' : '#dc3545';
+        changeToggleButton.style.color = '#fff';
         createAndShuffleDeck();
         updateCardCount();
     });
