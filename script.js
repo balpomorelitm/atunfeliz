@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardActions = [
         "Choca esos 5", 
         "Puños de pez", 
-        "Salmón feliz", 
+        "Atún feliz",
         "Cambios"
     ];
 
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return 'card-choca';
             case 'Pu\u00f1os de pez':
                 return 'card-punos';
-            case 'Salm\u00f3n feliz':
-                return 'card-salmon';
+            case 'At\u00fan feliz':
+                return 'card-atun';
             case 'Cambios':
                 return 'card-cambios';
             default:
