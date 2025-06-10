@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return 'card-atun';
             case 'cambio':
             case 'cambios':
-                return 'card-cambios';
+                return 'card-cambio';
             default:
                 return '';
         }
@@ -95,11 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Muestra la carta y los botones
 
-        cardActionText.textContent = currentCard;
         cardIconElement.textContent = cardIcons[currentCard] || '';
         activeCardElement.className = 'card';
 
-        cardActionText.textContent = `${currentCard} ${cardEmojis[currentCard] || ''}`;
+        cardActionText.textContent = `${currentCard} ${cardEmojis[currentCard.toLowerCase()] || ''}`;
 
         activeCardElement.classList.add(cardClass(currentCard));
         deckElement.classList.add('hidden');
