@@ -31,8 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "choca esos 5": "🤚✋",
         "puños de atún": "🤜🤛",
         "atún feliz": "🐟😀",
-        "cambio": "♻️"
-
     };
 
     let playerDeck = [];
