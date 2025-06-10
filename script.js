@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Puños de atún": "🐟+👊",
         "Atún feliz": "🐟",
         "Cambio": "🔄"
-    ];
+    };
 
     const cardEmojis = {
         "choca esos 5": "🤚✋",
