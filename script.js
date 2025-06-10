@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const completeButton = document.getElementById('complete-btn');
     const winMessageElement = document.getElementById('win-message');
     const restartButton = document.getElementById('restart-btn');
+    const remainingCountElement = document.getElementById('remaining-count');
 
     // --- Definición de las cartas ---
     const cardActions = [
@@ -22,6 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCard = null;
 
     // --- Funciones del Juego ---
+
+    /**
+     * Actualiza el texto del contador de cartas restantes.
+     */
+    function updateRemainingCount() {
+        remainingCountElement.textContent = `Cartas restantes: ${playerDeck.length}`;
+    }
 
     /**
      * Crea un mazo de 12 cartas (3 de cada tipo) y lo baraja.
@@ -48,11 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
             activeCardElement.classList.add('hidden');
             actionButtons.classList.add('hidden');
             winMessageElement.classList.remove('hidden');
+            updateRemainingCount();
             return;
         }
 
         // Saca la primera carta del mazo
         currentCard = playerDeck.shift();
+        updateRemainingCount();
         
         // Muestra la carta y los botones
         cardActionText.textContent = currentCard;
@@ -89,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeCardElement.classList.add('hidden');
         actionButtons.classList.add('hidden');
         deckElement.classList.remove('hidden');
+        updateRemainingCount();
     }
 
 

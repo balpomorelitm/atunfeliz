@@ -20,6 +20,12 @@ h1 {
     color: #ff6347; /* Tomato */
 }
 
+/* Contador de cartas restantes */
+#remaining-count {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
 /* Estilos para las cartas */
 .card-pile, .card {
     background-color: white;
