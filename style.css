@@ -20,6 +20,11 @@ body {
     width: 90%;
     max-width: 400px;
     position: relative;
+
+    /* Contenedor flexible para centrar todo su contenido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Reemplaza tu antiguo estilo h1 con este */
