@@ -30,11 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "Cambio": "🔄"
     };
 
-    const cardEmojis = {
-        "choca esos 5": "🤚✋",
-        "puños de atún": "🤜🤛",
-        "atún feliz": "🐟😀",
-    };
 
     let playerDeck = [];
     let currentCard = null;
@@ -115,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardIconElement.textContent = cardIcons[currentCard] || '';
         activeCardElement.className = 'card';
 
-        cardActionText.textContent = `${currentCard} ${cardEmojis[currentCard.toLowerCase()] || ''}`;
+        cardActionText.textContent = currentCard;
 
         activeCardElement.classList.add(cardClass(currentCard));
         deckElement.classList.add('hidden');
